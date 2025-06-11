@@ -1,0 +1,119 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block Style %}
+    <style>
+        :root {
+            --primary-color: #2980b9;
+            --secondary-color: #f4f7f9;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+#id_priority, #id_status   {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+        form input[type="text"],
+        form input[type="date"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1c5980;
+        }
+
+        .back-btn {
+            background-color: #7f8c8d;
+            color: white;
+            display: block;
+            margin: 20px auto 0;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .back-btn:hover {
+            background-color: #5c6e73;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .form-container h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+{% endblock Style %}
+
+
+{% block Body %}
+<div class="form-container">
+    <h2>ADD/EDIT TASK</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn submit-btn">
+    </form>
+    <a href="{% url 'ToDo' %}" class="btn back-btn">Back to List</a>
+</div>
+{% endblock Body %}

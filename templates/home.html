@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #ecf0f1;
+        --text-dark: #2c3e50;
+        --text-light: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: var(--text-dark);
+        padding: 20px;
+    }
+
+    nav {
+        background-color: var(--text-dark);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 0px 0px 15px 15px;
+
+        display: flex;
+        justify-content: flex-end; /* Push children (ul) to the right */
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5rem;
+        position: relative;
+        margin-right: 50px;
+        margin-left: auto;
+    }
+
+    nav ul li a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    h1 {
+        margin-top: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+        color: var(--primary-color);
+    }
+
+    p {
+        text-align: center;
+        margin: 10px 0 30px;
+        font-size: 1.2rem;
+    }
+
+    button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button a {
+        color: white;
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: #1c5980;
+    }
+
+    .buttons-container {
+        text-align: center;
+    }
+
+
+    @media (max-width: 600px) {
+        nav ul {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        button {
+            width: 80%;
+        }
+    }
+    img{
+        width: 300px;
+    }
+</style>
+
+    {% block Style %}
+    
+    {% endblock Style %}
+</head>
+<body>
+
+<nav>
+    <h1 style="margin: 0px 0px 0px 50px; font-size: larger; color: var(--secondary-color);">TO-DO List</h1>
+    <ul>
+        
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li class="dropdown">
+            <a href="{% url 'ToDo' %}">To-Do List</a>
+        </li>
+        <li><a href="#">About</a></li>
+    </ul>
+</nav>
+
+
+    {% block Body %}
+
+    <h1>WELCOME To Task Reminder</h1>
+    <p>Please add your tasks here</p>
+    <div style="text-align: center; padding-bottom: 30px;">
+        <img src="https://www.pngkey.com/png/detail/432-4325100_empathic-relationship-complife-icon-blue-blue-icon-of.png" alt="">
+    </div>
+    <div class="buttons-container">
+        <button><a href="{% url 'ToDo' %}">View Tasks</a></button>
+        <button><a href="{% url 'insert' %}">Add Task</a></button>
+    </div>
+
+    {% endblock Body %}
+
+
+    {% block Script %}
+    {% endblock Script %}
+
+</body>
+</html>
